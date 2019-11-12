@@ -1,10 +1,31 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
+//import Table from 'react-native-simple-table';
+
+
+import Bar from './src/elements/Bar';
+import SettingMenu from './src/conmponents/SettingMenu';
+import MenuList from './src/conmponents/MenuList';
+import MenuListScreen from './src/screens/MenuListScreen';
+import SubjectDetail from "./src/conmponents/SubjectDetail";
+import CurrentStatusList from './src/conmponents/CurrentStatusList';
+import TimeTable from './src/conmponents/TimeTable';
+import TimeTableScreen from './src/screens/TimeTableScreen';
+import CurrentStatusListScreen from './src/screens/CurrentStatusListScreen';
+import SubjectDetailScreen from './src/screens/SubjectDetailScreen';
+import SettingHomeScreen from './src/screens/SettingHomeScreen';
+import CurrentStatus from './src/elements/CurrentStatus';
+
+
+
 
 export default function App() {
   return (
+
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <TimeTableScreen/>
+      
+
     </View>
   );
 }
@@ -15,5 +36,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    
+  
   },
+
 });
