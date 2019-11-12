@@ -15,7 +15,8 @@ import CurrentStatusListScreen from './src/screens/CurrentStatusListScreen';
 import SubjectDetailScreen from './src/screens/SubjectDetailScreen';
 import SettingHomeScreen from './src/screens/SettingHomeScreen';
 import CurrentStatus from './src/elements/CurrentStatus';
-
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
 
 
