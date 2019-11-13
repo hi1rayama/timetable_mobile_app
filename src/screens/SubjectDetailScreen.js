@@ -6,14 +6,13 @@ import SubjectDetail from "../conmponents/SubjectDetail";
 
 
 class SubjectDetailScreen extends React.Component{
+    static navigationOptions = {
+        title: '講義詳細',
+      };
     render(){
         return(
             
                 <View style={styles.container}  >
-                    <View >
-                    <Bar name='月曜日/2限'/>
-                    </View>
-
                     <View style={styles.settingMenu}>
                     <SubjectDetail />
                     </View>

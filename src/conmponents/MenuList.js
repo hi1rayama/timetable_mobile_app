@@ -1,14 +1,16 @@
 import React from 'react';
-import { StyleSheet, View, Text, TextInput } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 
 
 class MenuList extends React.Component {
     render() {
         return (
             <View style={styles.menuList}>
-                <View style={styles.menuListItem}>
-                    <Text style={styles.menuName}>設定</Text>
-                </View>
+                <TouchableHighlight onPress={() => { this.props.navigation.navigate('SettingHome') }}>
+                    <View style={styles.menuListItem}>
+                        <Text style={styles.menuName}>設定</Text>
+                    </View>
+                </TouchableHighlight>
 
                 <View style={styles.menuListItem}>
                     <Text style={styles.menuName}>現状</Text>
@@ -18,11 +20,12 @@ class MenuList extends React.Component {
                     <Text style={styles.menuName}>TODO</Text>
 
                 </View>
+                <TouchableHighlight onPress={() => { this.props.navigation.navigate('TimeTable') }}>
+                    <View style={styles.menuListItem}>
+                        <Text style={styles.menuName}>時間割</Text>
+                    </View>
+                </TouchableHighlight>
 
-                <View style={styles.menuListItem}>
-                    <Text style={styles.menuName}>時間割</Text>
-
-                </View>
             </View>
 
         );

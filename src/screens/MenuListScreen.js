@@ -6,16 +6,15 @@ import MenuList from "../conmponents/MenuList";
 
 
 class MenuListScreen extends React.Component {
+    static navigationOptions = {
+        title: 'メニュー',
+      };
     render() {
         return (
 
             <View style={styles.container}  >
                 <View >
-                    <Bar name='Menu' />
-                </View>
-
-                <View >
-                    <MenuList />
+                    <MenuList navigation={this.props.navigation}/>
                 </View>
 
             </View>

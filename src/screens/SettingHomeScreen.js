@@ -6,13 +6,13 @@ import SettingMenu from '../conmponents/SettingMenu';
 
 
 class SettingHomeScreen extends React.Component {
+    static navigationOptions = {
+        title: '設 定',
+      };
     render() {
         return (
 
             <View style={styles.container}  >
-                <View >
-                    <Bar name='設  定' />
-                </View>
 
                 <View >
                     <SettingMenu />

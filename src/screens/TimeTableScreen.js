@@ -1,21 +1,21 @@
 import React from 'react';
 import {StyleSheet,View} from 'react-native';
 
+
 import Bar from '../elements/Bar';
 import TimeTable from "../conmponents/TimeTable";
 
 
 class TimeTableScreen extends React.Component{
+    static navigationOptions = {
+        title: '時間割',
+      };
     render(){
         return(
             
                 <View style={styles.container}  >
-                    <View >
-                    <Bar name='時間割'/>
-                    </View>
-
-                    <View style={styles.settingMenu}>
-                    <TimeTable />
+                    <View style={styles.settingMenu} >
+                    <TimeTable navigation={this.props.navigation}/>
                     </View>
                     
                 </View>
