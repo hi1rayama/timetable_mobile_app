@@ -14,15 +14,18 @@ import TimeTableScreen from './src/screens/TimeTableScreen';
 import CurrentStatusListScreen from './src/screens/CurrentStatusListScreen';
 import SubjectDetailScreen from './src/screens/SubjectDetailScreen';
 import SettingHomeScreen from './src/screens/SettingHomeScreen';
+import LoginScreen from './src/screens/LoginScreen';
+import SignupScreen from './src/screens/SignupScreen';
+
 import CurrentStatus from './src/elements/CurrentStatus';
 
 
 const App = createStackNavigator({
-  
-  //Login:{ screen:LoginScreen },
-  //Sign:{screen:SignupScreen},
-  MenuList:{screen:MenuListScreen},
   TimeTable: { screen: TimeTableScreen},
+  Signup:{screen:SignupScreen},  
+  Login:{ screen:LoginScreen },
+  MenuList:{screen:MenuListScreen},
+  
   SettingHome:{screen:SettingHomeScreen},
   SubjectDetail:{screen:SubjectDetailScreen}
  
