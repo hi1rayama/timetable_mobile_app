@@ -34,10 +34,6 @@ const styles = StyleSheet.create({
     settingMenu:{
         width:'100%',
         flex: 1,
-
-        flexDirection: 'column',
-        justifyContent: 'center',
-    
       },
 })
 export default SubjectDetailScreen;
