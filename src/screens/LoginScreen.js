@@ -14,14 +14,17 @@ class LoginScreen extends React.Component {
     state = {
         email: 'email-address',
         password: 'password',
-    }
-    /**
+    };
+    
     handleSubmit() {
-            this.props.navigation.navigate('Home');
-        //this.props.navigation.navigate('Home');
-        //Login!!
-    }
-    */
+        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+        .then((user)=>{
+            this.props.navigation.navigate('TimeTable');
+        })
+        .catch((error) =>{
+
+        })
+    };
 
     render() {
         return (
@@ -29,10 +32,20 @@ class LoginScreen extends React.Component {
                 <TextInput
                     style={styles.input}
                     value={this.state.email}
+                    onChangeText={(text) => { this.setState({ email: text }); }}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    placeholder="Emall Address"
+
                 />
                 <TextInput
                     style={styles.input}
                     value={this.state.password}
+                    onChangeText={(text) => { this.setState({ password: text }); }}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    placeholder="Password"
+                    secureTextEntry
 
 
                 />
