@@ -9,6 +9,21 @@ import firebase from 'firebase';
 
 
 class TimeTable extends React.Component {
+    renderItem({ item }) {
+        console.log('item', item);
+        return (
+
+            <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail', { item }); }} style={styles.table}>
+                <View>
+                    <Text style={styles.text} >{item.name}</Text>
+                    <Text style={styles.text} >{item.room}</Text>
+                </View>
+
+            </TouchableHighlight>
+
+        );
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -24,100 +39,43 @@ class TimeTable extends React.Component {
 
                 <View style={styles.inline}>
                     <View style={styles.table3} ><Text style={styles.text} >{"1"}</Text></View>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
+                    <View>
+                        <FlatList data={this.props.oneList} horizontal renderItem={this.renderItem.bind(this)} />
+                    </View>
 
                 </View>
+
                 <View style={styles.inline}>
-                    <View style={styles.table3} ><Text style={styles.text} >{"1"}</Text></View>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
+                    <View style={styles.table3} ><Text style={styles.text} >{"2"}</Text></View>
+                    <View>
+                        <FlatList data={this.props.twoList} horizontal renderItem={this.renderItem.bind(this)} />
+                    </View>
 
                 </View>
+
                 <View style={styles.inline}>
-                    <View style={styles.table3} ><Text style={styles.text} >{"1"}</Text></View>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
+                    <View style={styles.table3} ><Text style={styles.text} >{"3"}</Text></View>
+                    <View>
+                        <FlatList data={this.props.threeList} horizontal renderItem={this.renderItem.bind(this)} />
+                    </View>
 
                 </View>
+
                 <View style={styles.inline}>
-                    <View style={styles.table3} ><Text style={styles.text} >{"1"}</Text></View>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
+                    <View style={styles.table3} ><Text style={styles.text} >{"4"}</Text></View>
+                    <View>
+                        <FlatList data={this.props.fourList} horizontal renderItem={this.renderItem.bind(this)} />
+                    </View>
 
                 </View>
+
                 <View style={styles.inline}>
-                    <View style={styles.table3} ><Text style={styles.text} >{"1"}</Text></View>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail') }} style={styles.table}>
-                        <Text style={styles.text} >{"1"}</Text>
-                    </TouchableHighlight>
+                    <View style={styles.table3} ><Text style={styles.text} >{"5"}</Text></View>
+                    <View>
+                        <FlatList data={this.props.fiveList} horizontal renderItem={this.renderItem.bind(this)} />
+                    </View>
 
                 </View>
-
 
             </View>
 
@@ -138,6 +96,7 @@ const styles = StyleSheet.create({
         height: 100,
         width: 70,
         paddingRight: 1,
+
 
 
     },
@@ -164,6 +123,19 @@ const styles = StyleSheet.create({
         borderColor: "#000",
         height: 25,
         width: 20,
+
+    },
+    table5: {
+        alignSelf: "flex-start",
+        borderWidth: 1,
+        borderColor: "#000",
+        height: 100,
+        width: 70,
+        paddingRight: 1,
+        flexDirection: 'row',
+        paddingTop: 1,
+
+
 
     },
     inline: {
