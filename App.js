@@ -16,6 +16,7 @@ import SettingHomeScreen from './src/screens/SettingHomeScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import SignupScreen from './src/screens/SignupScreen';
 
+require("firebase/firestore");
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -32,35 +33,35 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
-const App = createStackNavigator({
-  TimeTable: {screen: TimeTableScreen},
-  SettingHome:{screen:SettingHomeScreen},
-  MenuList:{screen:MenuListScreen},
-  SubjectDetail: { screen: SubjectDetailScreen },
-  Login: { screen: LoginScreen },
-  Signup: { screen: SignupScreen },
-
-
-}, {
-  defaultNavigationOptions: {
-    headerTintColor: '#fff',
-    headerBackTitle: null,
-    headerStyle: {
-      backgroundColor: '#00aaff',
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 0 },
-      shadowOpacity: 0.5,
-      shadowRadius: 3,
-      zIndex: 10,
-    },
-    headerTitleStyle: {
-      color: '#fff',
-      fontSize: 24,
-      fontWeight: 'bold',
+const App = createBottomTabNavigator({
+  TimeTable: {
+    screen: createStackNavigator({
+        TimeTable: {screen: TimeTableScreen},
+        SubjectDetail: { screen: SubjectDetailScreen },
+      }),
+    navigationOptions: {
+      title: '時間割',
     }
-  }
-});
+  },
 
+  MenuList: {
+    screen: createStackNavigator({
+        MenuList: {screen: MenuListScreen},
+      }),
+    navigationOptions: {
+      title: '現状',
+    }
+  },
+
+  SettingHome: {
+    screen: createStackNavigator({
+        Setting: { screen: SettingHomeScreen},
+      }),
+    navigationOptions: {
+      title: '設定',
+    }
+  },
+});
 
 export default createAppContainer(App);
 
@@ -113,4 +114,33 @@ const App = createStackNavigator({
     }
   }
 });
+const App = createStackNavigator({
+  TimeTable: {screen: TimeTableScreen},
+  MenuList:{screen:MenuListScreen},
+  SettingHome:{screen:SettingHomeScreen},
+  Login: { screen: LoginScreen },
+  Signup: { screen: SignupScreen },
+  SubjectDetail: { screen: SubjectDetailScreen },
+
+}, {
+  defaultNavigationOptions: {
+    headerTintColor: '#fff',
+    headerBackTitle: null,
+    headerStyle: {
+      backgroundColor: '#00aaff',
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 0 },
+      shadowOpacity: 0.5,
+      shadowRadius: 3,
+      zIndex: 10,
+    },
+    headerTitleStyle: {
+      color: '#fff',
+      fontSize: 24,
+      fontWeight: 'bold',
+    }
+  }
+});
+
+
  */

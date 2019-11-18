@@ -13,7 +13,7 @@ class LoginScreen extends React.Component {
         title: 'ログイン',
       };
       state = {
-        email: 'chacha@sample.com',
+        email: 'chacha@example.com',
         password: 'chachaisdog2',
     }
     

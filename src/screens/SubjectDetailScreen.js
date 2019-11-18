@@ -7,6 +7,20 @@ import firebase from 'firebase';
 class SubjectDetailScreen extends React.Component {
   static navigationOptions = {
     title: '講義詳細',
+    headerTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: '#00aaff',
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 0 },
+      shadowOpacity: 0.5,
+      shadowRadius: 3,
+      zIndex: 10,
+    },
+    headerTitleStyle: {
+      color: '#fff',
+      fontSize: 24,
+      fontWeight: 'bold',
+    }
   };
   state = {
     attendance: 0,
@@ -144,7 +158,7 @@ class SubjectDetailScreen extends React.Component {
           <Text style={styles.inputformat2} >{this.state.absence}回</Text>
           <Text style={styles.inputformat2}>{this.state.cancell}回</Text>
         </View>
-      
+
         <CircleButton color="white" style={{ width: 335 }} name="plus" onPress={this.attendanceUp} />
         <CircleButton color="white" style={{ width: 290 }} name="minus" onPress={this.attendanceDown} />
         <CircleButton color="white" style={{ width: 225 }} name="plus" onPress={this.absenceUp} />
@@ -152,13 +166,13 @@ class SubjectDetailScreen extends React.Component {
         <CircleButton color="white" style={{ width: 115 }} name="plus" onPress={this.cancellUp} />
         <CircleButton color="white" style={{ width: 70 }} name="minus" onPress={this.cancellDown} />
 
-        
-        <View style={{top:80}}>
+
+        <View style={{ top: 80 }}>
           <TouchableHighlight onPress={this.handlePress.bind(this)} style={styles.button} underlayColor='#ddd'>
             <Text style={styles.buttonTitle}>保存する</Text>
           </TouchableHighlight>
-          </View>
-       
+        </View>
+
 
       </View>
 
@@ -184,12 +198,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     flexDirection: 'row',
     paddingTop: 15,
-    
+
 
   },
   textformat: {
     fontSize: 30,
-    
+
 
   },
   inputformat: {
@@ -212,9 +226,9 @@ const styles = StyleSheet.create({
     width: 80,
     fontSize: 20,
     textAlign: 'center',
-    borderRadius:15,
+    borderRadius: 15,
     overflow: "hidden"//TextでborderRadiusを使用する場合はこれが必須
-    
+
 
   },
   button: {

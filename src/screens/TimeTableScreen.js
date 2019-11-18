@@ -5,16 +5,32 @@ import CircleButton from '../elements/CircleButton';
 import firebase from 'firebase';
 
 class TimeTableScreen extends React.Component {
-  static navigationOptions = {
+  static navigationOptions= {
     title: '時間割',
+    headerTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: '#00aaff',
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 0 },
+      shadowOpacity: 0.5,
+      shadowRadius: 3,
+      zIndex: 10,
+    },
+    headerTitleStyle: {
+      color: '#fff',
+      fontSize: 24,
+      fontWeight: 'bold',
+    }
   };
+
   state={
     oneList:[],
     twoList:[],
     threeList:[],
     fourList:[],
     fiveList:[]
-  }
+  };
+  
         componentWillMount(){
           const db=firebase.firestore();
          db.collection('/users/0UEjQ06EW0ezRbDZ0RAFj84Tja03/one')

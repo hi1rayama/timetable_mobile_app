@@ -17,6 +17,9 @@ class SettingMenu extends React.Component{
                     <View style={styles.settingMenuItem}>
                         <Text style={styles.settingTitle}>タグの追加</Text>
                     </View>
+                    <View style={styles.settingMenuItem}>
+                        <Text style={styles.settingTitle}>ログアウト</Text>
+                    </View>
             </View>
 
         );
@@ -26,7 +29,6 @@ class SettingMenu extends React.Component{
 const styles = StyleSheet.create({
     settingList:{
         flexDirection:'column',
-        paddingTop:90,
 
     },
       settingMenuItem:{
