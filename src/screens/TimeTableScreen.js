@@ -22,7 +22,7 @@ class TimeTableScreen extends React.Component {
              const tempList=[];
              snapshot.forEach((doc)=>{
               console.log(doc.id, " => ", doc.data());
-              tempList.push({...doc.data(),key:doc.id})
+              tempList.push({...doc.data(),key:doc.id,class:'one'})
 
              });
              this.setState({oneList:tempList});
@@ -32,7 +32,7 @@ class TimeTableScreen extends React.Component {
            const tempList=[];
              snapshot.forEach((doc)=>{
               console.log(doc.id, " => ", doc.data());
-              tempList.push({...doc.data(),key:doc.id})
+              tempList.push({...doc.data(),key:doc.id,class:'two'})
 
              });
              this.setState({twoList:tempList});
@@ -42,7 +42,7 @@ class TimeTableScreen extends React.Component {
            const tempList=[];
              snapshot.forEach((doc)=>{
               console.log(doc.id, " => ", doc.data());
-              tempList.push({...doc.data(),key:doc.id})
+              tempList.push({...doc.data(),key:doc.id,class:'three'})
 
              });
              this.setState({threeList:tempList});
@@ -52,7 +52,7 @@ class TimeTableScreen extends React.Component {
            const tempList=[];
              snapshot.forEach((doc)=>{
               console.log(doc.id, " => ", doc.data());
-              tempList.push({...doc.data(),key:doc.id})
+              tempList.push({...doc.data(),key:doc.id,class:'four'})
 
              });
              this.setState({fourList:tempList});
@@ -62,7 +62,7 @@ class TimeTableScreen extends React.Component {
            const tempList=[];
              snapshot.forEach((doc)=>{
               console.log(doc.id, " => ", doc.data());
-              tempList.push({...doc.data(),key:doc.id})
+              tempList.push({...doc.data(),key:doc.id,class:'five'})
 
              });
              this.setState({fiveList:tempList});

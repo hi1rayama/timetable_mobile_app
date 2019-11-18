@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TextInput } from 'react-native';
-import SubjectDetail from "../conmponents/SubjectDetail";
+import { StyleSheet, View, Text, TextInput, TouchableHighlight } from 'react-native';
 import CircleButton from '../elements/CircleButton';
 import firebase from 'firebase';
 
@@ -17,8 +16,39 @@ class SubjectDetailScreen extends React.Component {
     number: 0,
     room: '',
     tag: '',
-    key:'',
-    class:'',
+    key: '',
+    class: '',
+    count: 0,
+
+  }
+  attendanceUp = () => {
+    this.setState({
+      attendance: this.state.attendance + 1
+    });
+  }
+  absenceUp = () => {
+    this.setState({
+      absence: this.state.absence + 1
+    });
+  }
+  cancellUp = () => {
+    this.setState({
+      cancell: this.state.cancell + 1
+    });
+  }
+  attendanceDown = () => {
+    if (this.state.attendance != 0)
+      this.setState({ attendance: this.state.attendance - 1 });
+
+  }
+  absenceDown = () => {
+    if (this.state.absence != 0)
+      this.setState({ absence: this.state.absence - 1 });
+
+  }
+  cancellDown = () => {
+    if (this.state.cancell != 0)
+      this.setState({ cancell: this.state.cancell - 1 });
 
   }
   componentWillMount() {
@@ -31,9 +61,9 @@ class SubjectDetailScreen extends React.Component {
       tag: params.item.tag,
       attendance: params.item.attendance,
       absence: params.item.absence,
-      cancel: params.item.cancell,
-      key:params.item.key,
-      class:params.item.class
+      cancell: params.item.cancell,
+      key: params.item.key,
+      class: params.item.class
 
     });
 
@@ -60,13 +90,12 @@ class SubjectDetailScreen extends React.Component {
         console.log(error);
       })
   }
-  
+
 
   render() {
     return (
 
       <View style={styles.container}  >
-        <Text >現在の出席:{this.state.attendanceCount}</Text>
         <View style={styles.inline}>
           <Text style={styles.textformat}>講義名: </Text>
           <TextInput
@@ -104,25 +133,32 @@ class SubjectDetailScreen extends React.Component {
         </View>
 
         <View style={styles.inline2}>
-          <Text style={styles.textformat}>出 席</Text>
-          <Text style={styles.textformat}>欠 席</Text>
-          <Text style={styles.textformat}>休 講</Text>
+          <Text style={styles.textformat}>出 席 </Text>
+          <Text style={styles.textformat}>欠 席 </Text>
+          <Text style={styles.textformat}>休 講 </Text>
 
         </View>
+
         <View style={styles.inline2}>
-    <Text style={styles.inputformat2}>{this.state.attendance}回</Text>
-    <Text style={styles.inputformat2} >{this.state.absence}回</Text>
-    <Text style={styles.inputformat2}>{this.state.cancell}回</Text>
+          <Text style={styles.inputformat2}>{this.state.attendance}回</Text>
+          <Text style={styles.inputformat2} >{this.state.absence}回</Text>
+          <Text style={styles.inputformat2}>{this.state.cancell}回</Text>
         </View>
+      
+        <CircleButton color="white" style={{ width: 335 }} name="plus" onPress={this.attendanceUp} />
+        <CircleButton color="white" style={{ width: 290 }} name="minus" onPress={this.attendanceDown} />
+        <CircleButton color="white" style={{ width: 225 }} name="plus" onPress={this.absenceUp} />
+        <CircleButton color="white" style={{ width: 180 }} name="minus" onPress={this.absenceDown} />
+        <CircleButton color="white" style={{ width: 115 }} name="plus" onPress={this.cancellUp} />
+        <CircleButton color="white" style={{ width: 70 }} name="minus" onPress={this.cancellDown} />
 
-
-        <CircleButton color="white" style={{ width: 335 }} name="plus" />
-        <CircleButton color="white" style={{ width: 290 }} name="minus" onPress={ this.handlePress.bind(this)} />
-        <CircleButton color="white" style={{ width: 225 }} name="plus" onPress={() => { this.props.navigation.navigate('TimeTable') }} />
-        <CircleButton color="white" style={{ width: 180 }} name="minus" onPress={() => { this.props.navigation.navigate('TimeTable') }} />
-        <CircleButton color="white" style={{ width: 115 }} name="plus" onPress={() => { this.props.navigation.navigate('TimeTable') }} />
-        <CircleButton color="white" style={{ width: 70 }} name="minus" onPress={() => { this.props.navigation.navigate('TimeTable') }} />
-
+        
+        <View style={{top:80}}>
+          <TouchableHighlight onPress={this.handlePress.bind(this)} style={styles.button} underlayColor='#ddd'>
+            <Text style={styles.buttonTitle}>保存する</Text>
+          </TouchableHighlight>
+          </View>
+       
 
       </View>
 
@@ -145,17 +181,19 @@ const styles = StyleSheet.create({
   },
 
   inline2: {
-    alignItems: 'center',
     justifyContent: 'space-evenly',
     flexDirection: 'row',
     paddingTop: 15,
+    
 
   },
   textformat: {
     fontSize: 30,
+    
 
   },
   inputformat: {
+    borderRadius: 15,
     backgroundColor: '#eee',
     height: 48,
     marginBottom: 16,
@@ -174,8 +212,24 @@ const styles = StyleSheet.create({
     width: 80,
     fontSize: 20,
     textAlign: 'center',
+    borderRadius:15,
+    overflow: "hidden"//TextでborderRadiusを使用する場合はこれが必須
+    
 
   },
+  button: {
+    backgroundColor: '#00008b',
+    height: 48,
+    borderRadius: 14,
+    justifyContent: 'center',
+    alignItems: 'center',//ボタンの中をセンターに
+    width: '70%',
+    alignSelf: 'center',//ボタンの外をセンターに
+  },
+  buttonTitle: {
+    color: '#fff',
+    fontSize: 18,
+  }
 })
 export default SubjectDetailScreen;
 

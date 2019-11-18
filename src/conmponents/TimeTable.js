@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, TouchableHighlight, TouchableOpacity, Text, FlatList } from 'react-native';
-import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import firebase from 'firebase';
 
 
@@ -13,10 +12,10 @@ class TimeTable extends React.Component {
         console.log('item', item);
         return (
 
-            <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail', { item }); }} style={styles.table}>
+            <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail', { item }); }} style={styles.table} underlayColor='#d3d3d3'>
                 <View>
-                    <Text style={styles.text} >{item.name}</Text>
-                    <Text style={styles.text} >{item.room}</Text>
+                    <Text style={[styles.text,{fontSize:17}]} >{item.name}</Text>
+                    <Text style={[styles.text,{fontSize:10}]} >{item.room}</Text>
                 </View>
 
             </TouchableHighlight>
@@ -85,7 +84,7 @@ class TimeTable extends React.Component {
 
 const styles = StyleSheet.create({
     container: { flex: 1, padding: 16, paddingTop: 50, backgroundColor: '#fff' },
-    text: {
+   text: {
         textAlign: 'center',
         fontSize: 20
     },
@@ -93,6 +92,7 @@ const styles = StyleSheet.create({
         alignSelf: "flex-start",
         borderWidth: 1,
         borderColor: "#000",
+        backgroundColor:"#d3d3d3",
         height: 100,
         width: 70,
         paddingRight: 1,

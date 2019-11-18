@@ -35,17 +35,19 @@ class CircleButton extends React.Component {
         }
         return (//返すコンポーネントは必ず1つだけつまり、1つのViewでしか返せない
             //最初にstyles.CircleButtonで次にstyleを上書きする
-            <TouchableHighlight style={[styles.container, style]} onPress={onPress}>
+            
+            <TouchableHighlight style={[styles.container, style]} onPress={onPress} underlayColor='#fff'>
 
                 <View style={[styles.CircleButton,{ backgroundColor: bgColor }]}>
                     {
                         this.state.fontLoaded ? (
-                            <CustomIcon name={this.props.name} style={[styles.CircleButtonTitle,{color:textColor}]} />
+                            <CustomIcon name={this.props.name} style={[styles.CircleButtonTitle,{color:textColor}]}  />
 
                         ) : null
                     }
                 </View>
             </TouchableHighlight>
+            
 
 
         );
@@ -58,14 +60,14 @@ const styles = StyleSheet.create({
         bottom: 24,
         right: 24,
         top:400,
-        paddingTop:15
+        paddingTop:15,
 
     },
     CircleButton: {
         width: 35,
         height: 35,
         borderRadius: 24,
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
