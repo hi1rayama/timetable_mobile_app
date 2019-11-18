@@ -6,7 +6,10 @@
  
 ## 画像
 
-![時間割表](timetable.png)
+<img src="timetable.png" width="250px">
+<img src="subject.png" width="250px">
+<img src="setting.png" width="250px">
+
 ## 実装する予定の機能
 
 * TODOリスト
