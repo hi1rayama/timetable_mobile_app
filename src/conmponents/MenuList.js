@@ -26,6 +26,12 @@ class MenuList extends React.Component {
                     </View>
                 </TouchableHighlight>
 
+                <TouchableHighlight onPress={() => { this.props.navigation.navigate('Login') }}>
+                    <View style={styles.menuListItem}>
+                        <Text style={styles.menuName}>ログアウト</Text>
+                    </View>
+                </TouchableHighlight>
+
             </View>
 
         );

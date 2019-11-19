@@ -34,8 +34,10 @@ firebase.initializeApp(firebaseConfig);
 
 
 const App = createBottomTabNavigator({
+
   TimeTable: {
     screen: createStackNavigator({
+        Login:{screen:LoginScreen},
         TimeTable: {screen: TimeTableScreen},
         SubjectDetail: { screen: SubjectDetailScreen },
       }),
@@ -49,7 +51,7 @@ const App = createBottomTabNavigator({
         MenuList: {screen: MenuListScreen},
       }),
     navigationOptions: {
-      title: '現状',
+      title: 'TODO',
     }
   },
 

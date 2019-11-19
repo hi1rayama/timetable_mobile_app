@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet,View,Text} from 'react-native';
+import {StyleSheet,View,Text, TouchableHighlight} from 'react-native';
 
 
 class SettingMenu extends React.Component{
@@ -17,9 +17,14 @@ class SettingMenu extends React.Component{
                     <View style={styles.settingMenuItem}>
                         <Text style={styles.settingTitle}>タグの追加</Text>
                     </View>
+
+                    
+                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('Login') }}>
                     <View style={styles.settingMenuItem}>
                         <Text style={styles.settingTitle}>ログアウト</Text>
-                    </View>
+                        </View>
+                    </TouchableHighlight>
+                    
             </View>
 
         );

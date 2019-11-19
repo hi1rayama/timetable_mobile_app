@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableHighlight } from 'react-native';
 import firebase from 'firebase';
+import { NavigationActions,StackActions } from 'react-navigation';
 /**
  * メモ
  * stateで入力処理をする
@@ -9,8 +10,22 @@ import firebase from 'firebase';
  */
 
 class LoginScreen extends React.Component {
-    static navigationOptions = {
+    static navigationOptions= {
         title: 'ログイン',
+        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: '#00aaff',
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 0 },
+          shadowOpacity: 0.5,
+          shadowRadius: 3,
+          zIndex: 10,
+        },
+        headerTitleStyle: {
+          color: '#fff',
+          fontSize: 24,
+          fontWeight: 'bold',
+        }
       };
       state = {
         email: 'chacha@example.com',
@@ -20,7 +35,16 @@ class LoginScreen extends React.Component {
     handleSubmit() {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then((user)=>{
-            this.props.navigation.navigate('TimeTable');
+
+            const resetAction=StackActions.reset({
+                index:0,
+                actions:[
+                    NavigationActions.navigate({routeName:'TimeTable'}),
+
+                ],
+            });
+            this.props.navigation.dispatch(resetAction);
+            
         })
         .catch((error) =>{
 

@@ -29,7 +29,7 @@ class SettingHomeScreen extends React.Component {
             <View style={styles.container}  >
 
                 <View >
-                    <SettingMenu />
+                    <SettingMenu navigation={this.props.navigation}/>
                 </View>
 
             </View>
