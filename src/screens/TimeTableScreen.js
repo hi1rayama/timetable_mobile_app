@@ -33,7 +33,8 @@ class TimeTableScreen extends React.Component {
   
         componentWillMount(){
           const db=firebase.firestore();
-         db.collection('/users/0UEjQ06EW0ezRbDZ0RAFj84Tja03/one')
+          const { currentUser } = firebase.auth();
+         db.collection(`/users/${currentUser.uid}/one`)
          .onSnapshot((snapshot)=>{
              const tempList=[];
              snapshot.forEach((doc)=>{
@@ -43,7 +44,7 @@ class TimeTableScreen extends React.Component {
              });
              this.setState({oneList:tempList});
          });
-         db.collection('/users/0UEjQ06EW0ezRbDZ0RAFj84Tja03/two')
+         db.collection(`/users/${currentUser.uid}/two`)
          .onSnapshot((snapshot)=>{
            const tempList=[];
              snapshot.forEach((doc)=>{
@@ -53,7 +54,7 @@ class TimeTableScreen extends React.Component {
              });
              this.setState({twoList:tempList});
          });
-         db.collection('/users/0UEjQ06EW0ezRbDZ0RAFj84Tja03/three')
+         db.collection(`/users/${currentUser.uid}/three`)
          .onSnapshot((snapshot)=>{
            const tempList=[];
              snapshot.forEach((doc)=>{
@@ -63,7 +64,7 @@ class TimeTableScreen extends React.Component {
              });
              this.setState({threeList:tempList});
          });
-         db.collection('/users/0UEjQ06EW0ezRbDZ0RAFj84Tja03/four')
+         db.collection(`/users/${currentUser.uid}/four`)
          .onSnapshot((snapshot)=>{
            const tempList=[];
              snapshot.forEach((doc)=>{
@@ -73,7 +74,7 @@ class TimeTableScreen extends React.Component {
              });
              this.setState({fourList:tempList});
          });
-         db.collection('/users/0UEjQ06EW0ezRbDZ0RAFj84Tja03/five')
+         db.collection(`/users/${currentUser.uid}/five`)
          .onSnapshot((snapshot)=>{
            const tempList=[];
              snapshot.forEach((doc)=>{

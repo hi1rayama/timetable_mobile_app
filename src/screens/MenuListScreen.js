@@ -1,21 +1,35 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View ,Text} from 'react-native';
 
 import Bar from '../elements/Bar';
 import MenuList from "../conmponents/MenuList";
 
 
 class MenuListScreen extends React.Component {
-    static navigationOptions = {
-        title: 'メニュー',
+    static navigationOptions= {
+        title: 'TODO',
+        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: '#00aaff',
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 0 },
+          shadowOpacity: 0.5,
+          shadowRadius: 3,
+          zIndex: 10,
+        },
+        headerTitleStyle: {
+          color: '#fff',
+          fontSize: 24,
+          fontWeight: 'bold',
+        }
       };
     render() {
         return (
 
             <View style={styles.container}  >
-                <View >
-                    <MenuList navigation={this.props.navigation}/>
-                </View>
+                <View style={styles.menuListItem}>
+                        <Text style={styles.menuName}>未実装</Text>
+                    </View>
 
             </View>
 
@@ -31,5 +45,15 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
     },
+
+    menuListItem: {
+        padding: 16,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd',
+    },
+    menuName: {
+        fontSize: 25,
+        marginBottom: 4,
+    }
 })
 export default MenuListScreen;

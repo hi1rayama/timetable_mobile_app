@@ -15,6 +15,7 @@ import SubjectDetailScreen from './src/screens/SubjectDetailScreen';
 import SettingHomeScreen from './src/screens/SettingHomeScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import SignupScreen from './src/screens/SignupScreen';
+import StartScreen from './src/screens/StartScreen';
 
 require("firebase/firestore");
 
@@ -38,6 +39,8 @@ const App = createBottomTabNavigator({
   TimeTable: {
     screen: createStackNavigator({
         Login:{screen:LoginScreen},
+        Signup:{screen:SignupScreen},
+        Start:{screen:StartScreen},
         TimeTable: {screen: TimeTableScreen},
         SubjectDetail: { screen: SubjectDetailScreen },
       }),

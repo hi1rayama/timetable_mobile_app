@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TouchableHighlight, TouchableOpacity, Text, FlatList } from 'react-native';
+import { StyleSheet, View, TouchableHighlight, Text, FlatList } from 'react-native';
 import firebase from 'firebase';
 
 
@@ -12,6 +12,7 @@ class TimeTable extends React.Component {
         console.log('item', item);
         return (
 
+            
             <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail', { item }); }} style={styles.table} underlayColor='#d3d3d3'>
                 <View>
                     <Text style={[styles.text,{fontSize:17}]} >{item.name}</Text>
@@ -39,7 +40,7 @@ class TimeTable extends React.Component {
                 <View style={styles.inline}>
                     <View style={styles.table3} ><Text style={styles.text} >{"1"}</Text></View>
                     <View>
-                        <FlatList data={this.props.oneList} horizontal renderItem={this.renderItem.bind(this)} />
+                        <FlatList data={this.props.oneList} horizontal scrollEnabled={ false }　renderItem={this.renderItem.bind(this)} />
                     </View>
 
                 </View>
@@ -47,7 +48,7 @@ class TimeTable extends React.Component {
                 <View style={styles.inline}>
                     <View style={styles.table3} ><Text style={styles.text} >{"2"}</Text></View>
                     <View>
-                        <FlatList data={this.props.twoList} horizontal renderItem={this.renderItem.bind(this)} />
+                        <FlatList data={this.props.twoList} horizontal scrollEnabled={ false }　renderItem={this.renderItem.bind(this)} />
                     </View>
 
                 </View>
@@ -55,7 +56,7 @@ class TimeTable extends React.Component {
                 <View style={styles.inline}>
                     <View style={styles.table3} ><Text style={styles.text} >{"3"}</Text></View>
                     <View>
-                        <FlatList data={this.props.threeList} horizontal renderItem={this.renderItem.bind(this)} />
+                        <FlatList data={this.props.threeList} horizontal　scrollEnabled={ false } renderItem={this.renderItem.bind(this)} />
                     </View>
 
                 </View>
@@ -63,7 +64,7 @@ class TimeTable extends React.Component {
                 <View style={styles.inline}>
                     <View style={styles.table3} ><Text style={styles.text} >{"4"}</Text></View>
                     <View>
-                        <FlatList data={this.props.fourList} horizontal renderItem={this.renderItem.bind(this)} />
+                        <FlatList data={this.props.fourList} horizontal scrollEnabled={ false }　renderItem={this.renderItem.bind(this)} />
                     </View>
 
                 </View>
@@ -71,7 +72,7 @@ class TimeTable extends React.Component {
                 <View style={styles.inline}>
                     <View style={styles.table3} ><Text style={styles.text} >{"5"}</Text></View>
                     <View>
-                        <FlatList data={this.props.fiveList} horizontal renderItem={this.renderItem.bind(this)} />
+                        <FlatList data={this.props.fiveList} horizontal scrollEnabled={ false }　renderItem={this.renderItem.bind(this)} />
                     </View>
 
                 </View>
@@ -93,9 +94,9 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: "#000",
         backgroundColor:"#d3d3d3",
-        height: 100,
+        height: 110,
         width: 70,
-        paddingRight: 1,
+        paddingTop:15
 
 
 
@@ -112,7 +113,7 @@ const styles = StyleSheet.create({
         alignSelf: "flex-start",
         borderWidth: 1,
         borderColor: "#000",
-        height: 100,
+        height: 110,
         width: 20,
 
 
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
         alignSelf: "flex-start",
         borderWidth: 1,
         borderColor: "#000",
-        height: 100,
+        height: 110,
         width: 70,
         paddingRight: 1,
         flexDirection: 'row',

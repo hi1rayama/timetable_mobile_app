@@ -85,8 +85,9 @@ class SubjectDetailScreen extends React.Component {
 
   handlePress() {
     const db = firebase.firestore();
+    const { currentUser } = firebase.auth();
     console.log(this.state.key);
-    db.collection(`/users/0UEjQ06EW0ezRbDZ0RAFj84Tja03/${this.state.class}`).doc(this.state.key)
+    db.collection(`/users/${currentUser.uid}/${this.state.class}`).doc(this.state.key)
       .update({
         name: this.state.name,
         number: this.state.number,

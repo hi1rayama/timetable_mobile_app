@@ -28,8 +28,8 @@ class LoginScreen extends React.Component {
         }
       };
       state = {
-        email: 'chacha@example.com',
-        password: 'chachaisdog2',
+        email: 'iqos@example.com',
+        password: 'u2xdf2w2',
     }
     
     handleSubmit() {

@@ -16,7 +16,28 @@ class SignupScreen extends React.Component {
         //SinUp!!
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then((user) => {
-                this.props.navigation.navigate('TimeTable');
+                this.props.navigation.navigate('Start');
+            })
+            .catch((error) => {
+                console.log(error);
+
+            });
+    }
+
+    handlePress() {
+        const db = firebase.firestore();
+        db.collection(`/users/0UEjQ06EW0ezRbDZ0RAFj84Tja03/two`).add({
+            attendance: 0,
+            absence: 0,
+            cancell: 0,
+            name: '',
+            number: 0,
+            room: '',
+            tag: '',
+        })
+            .then((dogRef) => {
+                console.log(dogRef.id);
+
             })
             .catch((error) => {
                 console.log(error);

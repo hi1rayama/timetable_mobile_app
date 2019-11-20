@@ -41,7 +41,6 @@ class MenuList extends React.Component {
 const styles = StyleSheet.create({
     menuList: {
         flexDirection: 'column',
-        paddingTop: 90,
 
     },
     menuListItem: {
