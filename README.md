@@ -1,7 +1,7 @@
 # 時間割モバイルアプリ(timetable_mobile_app)
 
  最低限の機能を実装したので、とりあえず書く。
- 大学生の講義の時間割を管理するモバイルアプリケーション。react-nativeで実装しているので、一応iOSとAndroidで動く。
+ 大学生の講義の時間割を管理するモバイルアプリケーション。react-nativeで実装しているが、iOSアプリを想定して作成。
  firebaseを使用しているため、異なるデバイスでも同じ時間割が表示される。将来的には、swiftでiOSアプリとして実装する予定。
  
 ## 実装する予定の機能
@@ -18,8 +18,8 @@
  
 ## 画像
 
-<img src="timetable.png" width="250px">
-<img src="subject.png" width="250px">
-<img src="setting.png" width="250px">
+<img src="timetable.png" width="600px">
+<img src="subject.png" width="600px">
+<img src="login:signup.png" width="600px">
 
 
