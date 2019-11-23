@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableHighlight } from 'react-native';
 import firebase from 'firebase';
-
+import { NavigationActions,StackActions } from 'react-navigation';
 
 class SignupScreen extends React.Component {
     static navigationOptions = {
@@ -16,7 +16,14 @@ class SignupScreen extends React.Component {
         //SinUp!!
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then((user) => {
-                this.props.navigation.navigate('Start');
+                const resetAction=StackActions.reset({
+                    index:0,
+                    actions:[
+                        NavigationActions.navigate({routeName:'Start'}),
+    
+                    ],
+                });
+                this.props.navigation.dispatch(resetAction);
             })
             .catch((error) => {
                 console.log(error);
@@ -24,32 +31,9 @@ class SignupScreen extends React.Component {
             });
     }
 
-    handlePress() {
-        const db = firebase.firestore();
-        db.collection(`/users/0UEjQ06EW0ezRbDZ0RAFj84Tja03/two`).add({
-            attendance: 0,
-            absence: 0,
-            cancell: 0,
-            name: '',
-            number: 0,
-            room: '',
-            tag: '',
-        })
-            .then((dogRef) => {
-                console.log(dogRef.id);
-
-            })
-            .catch((error) => {
-                console.log(error);
-
-            });
-    }
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.title}>
-                    メンバー登録
-                    </Text>
                 <TextInput style={styles.input}
                     value={this.state.email}
                     onChangeText={(text) => { this.setState({ email: text }); }}
@@ -87,11 +71,7 @@ const styles = StyleSheet.create({
         marginBottom: 16,
         borderColor: '#DDD',
         padding: 8,
-    },
-    title: {
-        fontSize: 32,
-        alignSelf: 'center',//中央にする
-        marginBottom: 24,
+        borderRadius: 15,
     },
     button: {
         backgroundColor: '#00008b',

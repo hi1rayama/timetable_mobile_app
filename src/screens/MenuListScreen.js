@@ -1,10 +1,6 @@
 import React from 'react';
 import { StyleSheet, View ,Text} from 'react-native';
 
-import Bar from '../elements/Bar';
-import MenuList from "../conmponents/MenuList";
-
-
 class MenuListScreen extends React.Component {
     static navigationOptions= {
         title: 'TODO',

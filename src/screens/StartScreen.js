@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Text,  TouchableHighlight } from 'react-native';
 import firebase from 'firebase';
+import { NavigationActions,StackActions } from 'react-navigation';
 
 
 class SignupScreen extends React.Component {
@@ -14,7 +15,7 @@ class SignupScreen extends React.Component {
 
 
 
-    componentWillMount() {
+    async componentWillMount() {
         const num = ["one", "two", "three", "four", "five"];
         const { currentUser } = firebase.auth();
         const db = firebase.firestore();
@@ -25,7 +26,7 @@ class SignupScreen extends React.Component {
                     absence: 0,
                     cancell: 0,
                     name: '',
-                    number: 0,
+                    number: '',
                     room: '',
                     tag: '',
                 })
@@ -35,26 +36,33 @@ class SignupScreen extends React.Component {
                     })
                     .catch((error) => {
                         console.log(error);
-                        this.props.navigation.navigate('TimeTable');//エラー画面にする
+                        this.props.navigation.navigate('TabNavigator');//エラー画面にする
                     });
 
 
             }
         }
+        
 
 
     }
 
     handlePress(){
-        this.props.navigation.navigate('TimeTable');
+        const resetAction=StackActions.reset({
+            index:0,
+            actions:[
+                NavigationActions.navigate({routeName:'TabNavigator'}),
+
+            ],
+        });
+        this.props.navigation.dispatch(resetAction);
     }
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.input}>{this.state.email}</Text>
-                <Text style={styles.input}>{this.state.password}</Text>
+                <Text style={styles.title}>登録が完了しました</Text>
                 <TouchableHighlight onPress={this.handlePress.bind(this)} style={styles.button} underlayColor='#ddd'>
-                    <Text style={styles.buttonTitle}>始める</Text>
+                    <Text style={styles.buttonTitle}>利用開始</Text>
                 </TouchableHighlight>
 
             </View>
@@ -69,17 +77,12 @@ const styles = StyleSheet.create({
         padding: 24,
         backgroundColor: '#fff'
     },
-    input: {
+    title: {
         backgroundColor: '#eee',
         height: 48,
         marginBottom: 16,
         borderColor: '#DDD',
         padding: 8,
-    },
-    title: {
-        fontSize: 32,
-        alignSelf: 'center',//中央にする
-        marginBottom: 24,
     },
     button: {
         backgroundColor: '#00008b',
@@ -89,6 +92,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',//ボタンの中をセンターに
         width: '70%',
         alignSelf: 'center',//ボタンの外をセンターに
+        
     },
     buttonTitle: {
         color: '#fff',

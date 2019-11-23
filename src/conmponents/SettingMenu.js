@@ -1,8 +1,20 @@
 import React from 'react';
 import {StyleSheet,View,Text, TouchableHighlight} from 'react-native';
+import { NavigationActions, StackActions } from 'react-navigation';
 
 
 class SettingMenu extends React.Component{
+    handlePress(){
+        const resetAction = StackActions.reset({
+            index: 0,
+            actions: [
+                NavigationActions.navigate({ routeName: 'Login' }),
+
+            ],
+        });
+        this.props.navigation.dispatch(resetAction);
+
+    }
     render(){
         return(
             <View style={styles.settingList} >
@@ -19,7 +31,7 @@ class SettingMenu extends React.Component{
                     </View>
 
                     
-                    <TouchableHighlight onPress={() => { this.props.navigation.navigate('Login') }}>
+                    <TouchableHighlight onPress={this.handlePress.bind(this)}>
                     <View style={styles.settingMenuItem}>
                         <Text style={styles.settingTitle}>ログアウト</Text>
                         </View>

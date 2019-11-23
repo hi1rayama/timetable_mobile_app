@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TouchableHighlight, TouchableOpacity, Text, FlatList } from 'react-native';
+import { StyleSheet, View} from 'react-native';
 import TimeTable from "../conmponents/TimeTable";
 import CircleButton from '../elements/CircleButton';
 import firebase from 'firebase';
@@ -95,7 +95,7 @@ class TimeTableScreen extends React.Component {
 
 
       <View style={styles.container}  >
-        <View style={styles.settingMenu} >
+        <View style={styles.table} >
           <CircleButton color="white" style={styles.button} name="bars" />
           <TimeTable 
             oneList={this.state.oneList} 
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
   },
-  settingMenu: {
+  table: {
     width: '95%',
     flex: 1,
     flexDirection: 'column',

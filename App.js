@@ -32,8 +32,63 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+const TabNavigator = createBottomTabNavigator({
+  TimeTable: { screen: TimeTableScreen, },
+  MenuList: { screen: MenuListScreen },
+  SettingHome: { screen: SettingHomeScreen },
 
 
+},
+  {
+    defaultNavigationOptions: {
+      headerTintColor: '#fff',
+      headerBackTitle: null,
+      headerStyle: {
+        backgroundColor: '#00aaff',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0.5,
+        shadowRadius: 3,
+        zIndex: 10,
+      }
+    }
+
+  });
+
+const App = createStackNavigator({
+  Login: { screen: LoginScreen },
+  Sign: { screen: SignupScreen },
+  Start:{screen:StartScreen},
+  TabNavigator,
+  SubjectDetail: { screen: SubjectDetailScreen },
+
+}, {
+  defaultNavigationOptions: {
+    title:'TimeTableApp',
+    headerTintColor: '#fff',
+    headerBackTitle: null,
+    headerStyle: {
+      backgroundColor: '#00aaff',
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 0 },
+      shadowOpacity: 0.5,
+      shadowRadius: 3,
+      zIndex: 10,
+    },
+    headerTitleStyle: {
+      color: '#fff',
+      fontSize: 24,
+      fontWeight: 'bold',
+    }
+  }
+});
+
+
+export default createAppContainer(App);
+
+
+/**
+ *
 const App = createBottomTabNavigator({
 
   TimeTable: {
@@ -68,57 +123,10 @@ const App = createBottomTabNavigator({
   },
 });
 
-export default createAppContainer(App);
 
 
-/**
- * const TabNavigator = createBottomTabNavigator({
-  TimeTable: {screen: TimeTableScreen},
-  MenuList:{screen:MenuListScreen},
-  SettingHome:{screen:SettingHomeScreen},
-},
-{
-  defaultNavigationOptions: {
-    headerTintColor:'#fff',
-    headerBackTitle:null,
-    headerStyle: {
-      backgroundColor: '#00aaff',
-      shadowColor:'#000',
-      shadowOffset:{width:0,height:0},
-      shadowOpacity:0.5,
-      shadowRadius:3,
-      zIndex:10,
-    }
-  }
-
-});
-
-const App = createStackNavigator({
-  TabNavigator,
-  SubjectDetail:{screen:SubjectDetailScreen},
-  Login:{ screen:LoginScreen },
-  Signup:{screen:SignupScreen},
 
 
-}, {
-  defaultNavigationOptions: {
-    headerTintColor:'#fff',
-    headerBackTitle:null,
-    headerStyle: {
-      backgroundColor: '#00aaff',
-      shadowColor:'#000',
-      shadowOffset:{width:0,height:0},
-      shadowOpacity:0.5,
-      shadowRadius:3,
-      zIndex:10,
-    },
-    headerTitleStyle: {
-      color:'#fff',
-      fontSize:24,
-      fontWeight:'bold',
-    }
-  }
-});
 const App = createStackNavigator({
   TimeTable: {screen: TimeTableScreen},
   MenuList:{screen:MenuListScreen},

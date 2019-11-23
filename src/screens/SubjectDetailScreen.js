@@ -120,7 +120,7 @@ class SubjectDetailScreen extends React.Component {
           />
         </View>
 
-        <View style={styles.inline}>
+        <View style={{flexDirection: 'row'}}>
           <Text style={styles.textformat}>単位数: </Text>
           <TextInput
             style={styles.inputformat}
@@ -129,7 +129,7 @@ class SubjectDetailScreen extends React.Component {
           />
         </View>
 
-        <View style={styles.inline}>
+        <View style={{flexDirection: 'row'}}>
           <Text style={styles.textformat}>教室　: </Text>
           <TextInput
             style={styles.inputformat}
@@ -138,7 +138,7 @@ class SubjectDetailScreen extends React.Component {
           />
         </View>
 
-        <View style={styles.inline}>
+        <View style={{flexDirection: 'row'}}>
           <Text style={styles.textformat}>タグ　: </Text>
           <TextInput
             style={styles.inputformat}
@@ -147,17 +147,17 @@ class SubjectDetailScreen extends React.Component {
           />
         </View>
 
-        <View style={styles.inline2}>
+        <View style={styles.inline}>
           <Text style={styles.textformat}>出 席 </Text>
           <Text style={styles.textformat}>欠 席 </Text>
           <Text style={styles.textformat}>休 講 </Text>
 
         </View>
 
-        <View style={styles.inline2}>
-          <Text style={styles.inputformat2}>{this.state.attendance}回</Text>
-          <Text style={styles.inputformat2} >{this.state.absence}回</Text>
-          <Text style={styles.inputformat2}>{this.state.cancell}回</Text>
+        <View style={styles.inline}>
+          <Text style={styles.counter}>{this.state.attendance}回</Text>
+          <Text style={styles.counter} >{this.state.absence}回</Text>
+          <Text style={styles.counter}>{this.state.cancell}回</Text>
         </View>
 
         <CircleButton color="white" style={{ width: 335 }} name="plus" onPress={this.attendanceUp} />
@@ -190,12 +190,8 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 24,
   },
+
   inline: {
-    flexDirection: 'row',
-
-  },
-
-  inline2: {
     justifyContent: 'space-evenly',
     flexDirection: 'row',
     paddingTop: 15,
@@ -218,7 +214,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
 
   },
-  inputformat2: {
+  counter: {
     backgroundColor: '#eee',
     height: 48,
     marginBottom: 16,
@@ -247,29 +243,3 @@ const styles = StyleSheet.create({
   }
 })
 export default SubjectDetailScreen;
-
-
-/**
- * return(
-
-                <View style={styles.container}  >
-                    <View style={styles.settingMenu}>
-                     <Text >現在の出席:{this.state.attendanceCount}</Text>
-                    <SubjectDetail detail={this.state.detail} />
-
-                    </View>
-                    <CircleButton color="white" style={{width:335}} name="plus" onPress={} />
-                    <CircleButton color="white" style={{width:290}} name="minus" onPress={() => {this.props.navigation.navigate('TimeTable')}} />
-                    <CircleButton color="white" style={{width:225}} name="plus" onPress={() => {this.props.navigation.navigate('TimeTable')}} />
-                    <CircleButton color="white" style={{width:180}} name="minus" onPress={() => {this.props.navigation.navigate('TimeTable')}} />
-                    <CircleButton color="white" style={{width:115}} name="plus" onPress={() => {this.props.navigation.navigate('TimeTable')}} />
-                    <CircleButton color="white" style={{width:70}} name="minus" onPress={() => {this.props.navigation.navigate('TimeTable')}} />
-
-
-                </View>
-
-
-
-
-        );
- */

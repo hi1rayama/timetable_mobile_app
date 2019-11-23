@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableHighlight, TouchableOpacity } from 'react-native';
 import firebase from 'firebase';
-import { NavigationActions,StackActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 /**
  * メモ
  * stateで入力処理をする
@@ -10,47 +10,52 @@ import { NavigationActions,StackActions } from 'react-navigation';
  */
 
 class LoginScreen extends React.Component {
-    static navigationOptions= {
+    static navigationOptions = {
         title: 'ログイン',
         headerTintColor: '#fff',
         headerStyle: {
-          backgroundColor: '#00aaff',
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: 0 },
-          shadowOpacity: 0.5,
-          shadowRadius: 3,
-          zIndex: 10,
+            backgroundColor: '#00aaff',
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 0 },
+            shadowOpacity: 0.5,
+            shadowRadius: 3,
+            zIndex: 10,
         },
         headerTitleStyle: {
-          color: '#fff',
-          fontSize: 24,
-          fontWeight: 'bold',
+            color: '#fff',
+            fontSize: 24,
+            fontWeight: 'bold',
         }
-      };
-      state = {
-        email: 'iqos@example.com',
-        password: 'u2xdf2w2',
+    };
+    state = {
+        email: '',
+        password: '',
     }
-    
+
+    //ログイン処理
     handleSubmit() {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-        .then((user)=>{
+            .then(() => {
+                const resetAction = StackActions.reset({
+                    index: 0,
+                    actions: [
+                        NavigationActions.navigate({ routeName: 'TabNavigator' }),
 
-            const resetAction=StackActions.reset({
-                index:0,
-                actions:[
-                    NavigationActions.navigate({routeName:'TimeTable'}),
+                    ],
+                });
+                this.props.navigation.dispatch(resetAction);
 
-                ],
-            });
-            this.props.navigation.dispatch(resetAction);
-            
-        })
-        .catch((error) =>{
+            })
+            .catch((error) => {
 
-            console.log(error);
-        })
+                console.log(error);
+            })
     };
+
+    //新規登録画面へ移動
+    handlePress() {
+        this.props.navigation.navigate('Sign');
+    }
 
     render() {
         return (
@@ -79,6 +84,11 @@ class LoginScreen extends React.Component {
                     <Text style={styles.buttonTitle}>ログインする</Text>
                 </TouchableHighlight>
 
+                <TouchableOpacity style={styles.signup} onPress={this.handlePress.bind(this)}>
+                    <Text style={styles.signupText}>新規ユーザー作成</Text>
+
+                </TouchableOpacity>
+
             </View>
 
         )
@@ -98,6 +108,7 @@ const styles = StyleSheet.create({
         marginBottom: 16,
         borderColor: '#DDD',
         padding: 8,
+        borderRadius: 15,
     },
     title: {
         fontSize: 32,
@@ -116,6 +127,13 @@ const styles = StyleSheet.create({
     buttonTitle: {
         color: '#fff',
         fontSize: 18,
+    },
+    signup: {
+        marginTop: 16,
+        alignSelf: 'center',
+    },
+    signupText: {
+        fontSize: 16,
     }
 
 

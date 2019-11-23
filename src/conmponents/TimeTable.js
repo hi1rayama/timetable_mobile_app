@@ -10,14 +10,23 @@ import firebase from 'firebase';
 class TimeTable extends React.Component {
     renderItem({ item }) {
         console.log('item', item);
+        let BGColor='#d3d3d3';
+        let roomBGColor = '#d3d3d3';//constは後で変更できない. letは後でも変更できる
+        if (item.name!=""){
+            BGColor='#afeeee';
+            roomBGColor = 'white';
+        }
+
         return (
 
             
-            <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail', { item }); }} style={styles.table} underlayColor='#d3d3d3'>
+            <TouchableHighlight onPress={() => { this.props.navigation.navigate('SubjectDetail', { item }); }} style={[styles.table,{backgroundColor:BGColor}]} underlayColor='#d3d3d3'>
                 <View>
                     <Text style={[styles.text,{fontSize:17}]} >{item.name}</Text>
-                    <Text style={[styles.text,{fontSize:10}]} >{item.room}</Text>
+                    <View style={{paddingTop:25}}>
+                    <Text style={[styles.text,{fontSize:10},{backgroundColor:roomBGColor},{borderRadius:5},{overflow: "hidden"}]} >{item.room}</Text>
                 </View>
+            </View>
 
             </TouchableHighlight>
 
