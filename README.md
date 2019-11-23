@@ -20,6 +20,6 @@
 
 <img src="timetable.png" width="600px">
 <img src="subject.png" width="600px">
-<img src="login:signup.png" width="600px">
+<img src="https://github.com/hi1rayama/timetable_mobile_app/blob/master/login:signup.png" width="600px">
 
 
