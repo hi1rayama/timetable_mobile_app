@@ -172,6 +172,11 @@ class SubjectDetailScreen extends React.Component {
           <TouchableHighlight onPress={this.handlePress.bind(this)} style={styles.button} underlayColor='#ddd'>
             <Text style={styles.buttonTitle}>保存する</Text>
           </TouchableHighlight>
+          </View>
+          <View style={{ top: 150 }}>
+          <TouchableHighlight onPress={() =>{this.props.navigation.navigate('TodoCreate')}} style={styles.button} underlayColor='#ddd'>
+            <Text style={styles.buttonTitle}>TODOを追加</Text>
+          </TouchableHighlight>
         </View>
 
 
