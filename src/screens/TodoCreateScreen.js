@@ -23,13 +23,45 @@ class TodoScreen extends React.Component {
     }
   };
   state = {
+    title:'',
     content:'',
     deadline:'',
+    key:'',
+    class:''
+
+  }
+  componentWillMount() {
+    const { params } = this.props.navigation.state;
+    console.log(params.item);
+    this.setState({
+      key: params.item.key,
+      class: params.item.class
+
+    });
 
   }
   
 
   handlePress() {
+    const db = firebase.firestore();
+    const { currentUser } = firebase.auth();
+    db.collection(`/users/${currentUser.uid}/todo/`).add({
+      class:this.state.class,
+      name_key:this.state.key,
+      title:this.state.title,
+      content:this.state.content,
+      deadline:this.state.deadline
+  })
+      .then((dogRef) => {
+          console.log(dogRef.id);
+          const { navigation } = this.props;
+           navigation.goBack();
+
+      })
+      .catch((error) => {
+          console.log(error);
+          this.props.navigation.navigate('TabNavigator');//エラー画面にする
+      });
   }
 
 
@@ -41,6 +73,8 @@ class TodoScreen extends React.Component {
           <Text style={styles.textformat}>タイトル: </Text>
           <TextInput
             style={styles.inputformat}
+            value={this.state.title}
+            onChangeText={(text) => { this.setState({ title: text }); }}
           />
         </View>
 
@@ -48,6 +82,8 @@ class TodoScreen extends React.Component {
           <Text style={styles.textformat}>内容　: </Text>
           <TextInput
             style={styles.inputformat}
+            value={this.state.content}
+            onChangeText={(text) => { this.setState({ content: text }); }}
           />
         </View>
 
@@ -55,11 +91,13 @@ class TodoScreen extends React.Component {
           <Text style={styles.textformat}>期限　: </Text>
           <TextInput
             style={styles.inputformat}
+            value={this.state.deadline}
+            onChangeText={(text) => { this.setState({ deadline: text }); }}
           />
           </View>
 
         <View style={{ top: 80 }}>
-          <TouchableHighlight  style={styles.button} underlayColor='#ddd'>
+          <TouchableHighlight onPress={this.handlePress.bind(this)} style={styles.button} underlayColor='#ddd'>
             <Text style={styles.buttonTitle}>追加する</Text>
           </TouchableHighlight>
           </View>
