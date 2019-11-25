@@ -16,7 +16,9 @@ import SettingHomeScreen from './src/screens/SettingHomeScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import SignupScreen from './src/screens/SignupScreen';
 import StartScreen from './src/screens/StartScreen';
-
+import TodoCreateScreen from './src/screens/TodoCreateScreen';
+import TodoListScreen from './src/screens/TodoListScreen';
+import TodoDetailScreen from './src/screens/TodoDetailScreen';
 require("firebase/firestore");
 
 // Your web app's Firebase configuration
@@ -36,6 +38,7 @@ const TabNavigator = createBottomTabNavigator({
   TimeTable: { screen: TimeTableScreen, },
   MenuList: { screen: MenuListScreen },
   SettingHome: { screen: SettingHomeScreen },
+  TodoList:{screen:TodoListScreen},
 
 
 },
@@ -61,6 +64,8 @@ const App = createStackNavigator({
   Start:{screen:StartScreen},
   TabNavigator,
   SubjectDetail: { screen: SubjectDetailScreen },
+ TodoDetail:{screen:TodoDetailScreen},
+  TodoCreate:{screen:TodoCreateScreen}
 
 }, {
   defaultNavigationOptions: {
