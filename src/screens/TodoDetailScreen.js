@@ -4,13 +4,7 @@ import firebase from 'firebase';
 //AsyncStorage
 
 
-const dateString=(date)=>{
-    const str=date.toDate().toISOString();
-
-    return str.split('T')[0];
-}
-
-class MemoDetailScreen extends React.Component {
+class TodoDetailScreen extends React.Component {
     state = {
         item:{},
         nameList:{},
@@ -89,4 +83,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default MemoDetailScreen;
+export default TodoDetailScreen;
