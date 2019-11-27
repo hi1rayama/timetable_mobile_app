@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text,TouchableHighlight } from 'react-native';
 import firebase from 'firebase';
 //AsyncStorage
 
@@ -38,22 +38,20 @@ class TodoDetailScreen extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={styles.inline}>
-                    <Text style={styles.textformat}>講義名: </Text>
-        <Text style={styles.inputformat}>{this.state.name}</Text>
+                    
+        <Text style={styles.inputformat}>講義名: {this.state.name}</Text>
                 </View>
 
                 <View style={{ flexDirection: 'row' }}>
-                    <Text style={styles.textformat}>タイトル: </Text>
-                    <Text style={styles.inputformat}>{item.title}</Text>
+                    <Text style={styles.inputformat}>タイトル: {item.title}</Text>
                 </View>
 
                 <View style={{ flexDirection: 'row' }}>
-                    <Text style={styles.textformat}>期限　: </Text>
-                    <Text style={styles.inputformat}>{item.deadline}</Text>
+                    <Text style={styles.inputformat}>期限　:{item.deadline}</Text>
                 </View>
-                <View style={styles.todoContent}>
+                <View style={styles.todoContent} >
                     <Text style={styles.todoBody}>
-                       内容 {item.content}
+                       {item.content}
                     </Text>
                 </View>
             </View>
@@ -67,7 +65,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '100%',
-        padding: 24
+        padding: 24,
+        paddingBottom:100,
 
     }, inline: {
         justifyContent: 'space-evenly',
@@ -83,26 +82,44 @@ const styles = StyleSheet.create({
     },
     inputformat: {
         borderRadius: 15,
-        backgroundColor: '#eee',
+        backgroundColor: '#e0ffff',
         height: 48,
         marginBottom: 16,
         borderColor: '#DDD',
         padding: 8,
-        width: '70%',
+        width: '100%',
         fontSize: 20,
+        borderRadius: 15,
+        overflow: "hidden"//TextでborderRadiusを使用する場合はこれが必須
 
     },
     todoBody:{
         lineHeight:20,
-        fontSize:15,
+        fontSize:25,
+        paddingTop:10
+        
     }, 
     todoContent: {
-        paddingTop: 30,
+        paddingTop: 15,
         paddingLeft: 20,
         paddingRight: 20,
-        backgroundColor: '#fff',
+        backgroundColor: '#e0ffff',
         flex: 1,
+        borderRadius: 15,
 
+    }, 
+    button: {
+        backgroundColor: '#00008b',
+        height: 48,
+        borderRadius: 14,
+        justifyContent: 'center',
+        alignItems: 'center',//ボタンの中をセンターに
+        width: 100,
+        alignSelf: 'center',//ボタンの外をセンターに
+    },
+    buttonTitle: {
+        color: '#fff',
+        fontSize: 18,
     },
 
 });
