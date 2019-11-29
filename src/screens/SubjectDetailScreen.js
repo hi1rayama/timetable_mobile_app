@@ -32,6 +32,7 @@ class SubjectDetailScreen extends React.Component {
     tag: '',
     key: '',
     class: '',
+    item:{},
     count: 0,
 
   }
@@ -65,10 +66,13 @@ class SubjectDetailScreen extends React.Component {
       this.setState({ cancell: this.state.cancell - 1 });
 
   }
+
+
   componentWillMount() {
     const { params } = this.props.navigation.state;
     console.log(params.item);
     this.setState({
+      item:params.item,
       name: params.item.name,
       number: params.item.number,
       room: params.item.room,
@@ -104,6 +108,10 @@ class SubjectDetailScreen extends React.Component {
       .catch((error) => {
         console.log(error);
       })
+  }
+
+  handleCreateTodo() {
+     this.props.navigation.navigate('TodoCreate',{item:this.state.item}); 
   }
 
 
@@ -174,7 +182,7 @@ class SubjectDetailScreen extends React.Component {
           </TouchableHighlight>
           </View>
           <View style={{ top: 150 }}>
-          <TouchableHighlight onPress={() =>{this.props.navigation.navigate('TodoCreate')}} style={styles.button} underlayColor='#ddd'>
+          <TouchableHighlight onPress={this.handleCreateTodo.bind(this)} style={styles.button} underlayColor='#ddd'>
             <Text style={styles.buttonTitle}>TODOを追加</Text>
           </TouchableHighlight>
         </View>
