@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text,TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 import firebase from 'firebase';
 //AsyncStorage
 
@@ -28,18 +28,21 @@ class TodoDetailScreen extends React.Component {
             .catch((error) => {
                 console.log(error);
             })
-
-
-
     }
+
+    handlePress() {
+        this.props.navigation.navigate('TodoEdit',{item:this.state.item});//エラー画面にする
+  
+      }
+    
 
     render() {
         const { item } = this.state;
         return (
             <View style={styles.container}>
                 <View style={styles.inline}>
-                    
-        <Text style={styles.inputformat}>講義名: {this.state.name}</Text>
+
+                    <Text style={styles.inputformat}>講義名: {this.state.name}</Text>
                 </View>
 
                 <View style={{ flexDirection: 'row' }}>
@@ -51,8 +54,13 @@ class TodoDetailScreen extends React.Component {
                 </View>
                 <View style={styles.todoContent} >
                     <Text style={styles.todoBody}>
-                       {item.content}
+                        {item.content}
                     </Text>
+                </View>
+                <View style={{ top: 20 }}>
+                    <TouchableHighlight onPress={this.handlePress.bind(this)} style={styles.button} underlayColor='#ddd'>
+                        <Text style={styles.buttonTitle}>編集</Text>
+                    </TouchableHighlight>
                 </View>
             </View>
 
@@ -66,7 +74,7 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
         padding: 24,
-        paddingBottom:100,
+        paddingBottom: 100,
 
     }, inline: {
         justifyContent: 'space-evenly',
@@ -93,12 +101,12 @@ const styles = StyleSheet.create({
         overflow: "hidden"//TextでborderRadiusを使用する場合はこれが必須
 
     },
-    todoBody:{
-        lineHeight:20,
-        fontSize:25,
-        paddingTop:10
-        
-    }, 
+    todoBody: {
+        lineHeight: 20,
+        fontSize: 25,
+        paddingTop: 10
+
+    },
     todoContent: {
         paddingTop: 15,
         paddingLeft: 20,
@@ -107,7 +115,7 @@ const styles = StyleSheet.create({
         flex: 1,
         borderRadius: 15,
 
-    }, 
+    },
     button: {
         backgroundColor: '#00008b',
         height: 48,

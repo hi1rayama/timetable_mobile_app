@@ -19,6 +19,7 @@ import StartScreen from './src/screens/StartScreen';
 import TodoCreateScreen from './src/screens/TodoCreateScreen';
 import TodoListScreen from './src/screens/TodoListScreen';
 import TodoDetailScreen from './src/screens/TodoDetailScreen';
+import TodoEditScreen from './src/screens/TodoEditScreen';
 require("firebase/firestore");
 
 // Your web app's Firebase configuration
@@ -65,7 +66,8 @@ const App = createStackNavigator({
   TabNavigator,
   SubjectDetail: { screen: SubjectDetailScreen },
  TodoDetail:{screen:TodoDetailScreen},
-  TodoCreate:{screen:TodoCreateScreen}
+  TodoCreate:{screen:TodoCreateScreen},
+  TodoEdit:{screen:TodoEditScreen},
 
 }, {
   defaultNavigationOptions: {

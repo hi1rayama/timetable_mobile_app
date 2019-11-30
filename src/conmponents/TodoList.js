@@ -1,16 +1,16 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableHighlight,FlatList } from 'react-native';
-
+import { StyleSheet, View, Text, TouchableHighlight, FlatList } from 'react-native';
+import firebase from 'firebase';
 
 class TodoList extends React.Component {
-  renderTodo({item}) {
+  renderTodo({ item }) {
     console.log(item);
     return (
 
-      <TouchableHighlight onPress={() => { this.props.navigation.navigate('TodoDetail',{item}) }}>
+      <TouchableHighlight onPress={() => { this.props.navigation.navigate('TodoDetail', { item }) }}>
         <View style={styles.todoListItem}>
-    <Text style={styles.todoTitle}>{item.title}</Text>
-    <Text style={styles.todoDate}>期限:{item.deadline}</Text>
+          <Text style={styles.todoTitle}>{item.title}</Text>
+          <Text style={styles.todoDate}>期限:{item.deadline}</Text>
         </View>
       </TouchableHighlight>
 

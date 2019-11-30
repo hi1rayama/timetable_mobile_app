@@ -4,7 +4,7 @@ import CircleButton from '../elements/CircleButton';
 import firebase from 'firebase';
 
 
-class TodoCreateScreen extends React.Component {
+class TodoEditScreen extends React.Component {
   static navigationOptions = {
     title: 'Todo',
     headerTintColor: '#fff',
@@ -34,6 +34,9 @@ class TodoCreateScreen extends React.Component {
     const { params } = this.props.navigation.state;
     console.log(params.item);
     this.setState({
+      title:params.item.title,
+      content:params.item.content,
+      deadline:params.item.deadline,
       key: params.item.key,
       class: params.item.class
 
@@ -45,7 +48,7 @@ class TodoCreateScreen extends React.Component {
   handlePress() {
     const db = firebase.firestore();
     const { currentUser } = firebase.auth();
-    db.collection(`/users/${currentUser.uid}/todo/`).add({
+    db.collection(`/users/${currentUser.uid}/todo/`).update({
       class:this.state.class,
       name_key:this.state.key,
       title:this.state.title,
@@ -96,9 +99,9 @@ class TodoCreateScreen extends React.Component {
           />
           </View>
 
-        <View style={{ top: 80 }}>
+        <View style={{ top: 20 }}>
           <TouchableHighlight onPress={this.handlePress.bind(this)} style={styles.button} underlayColor='#ddd'>
-            <Text style={styles.buttonTitle}>追加する</Text>
+            <Text style={styles.buttonTitle}>更新</Text>
           </TouchableHighlight>
           </View>
 
@@ -170,4 +173,4 @@ const styles = StyleSheet.create({
     fontSize: 18,
   }
 })
-export default TodoCreateScreen;
+export default TodoEditScreen;
