@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableHighlight } from 'react-native';
-import CircleButton from '../elements/CircleButton';
 import firebase from 'firebase';
 
 
@@ -48,9 +47,8 @@ class TodoEditScreen extends React.Component {
   handlePress() {
     const db = firebase.firestore();
     const { currentUser } = firebase.auth();
-    db.collection(`/users/${currentUser.uid}/todo/`).update({
-      class:this.state.class,
-      name_key:this.state.key,
+    db.collection(`/users/${currentUser.uid}/todo/`).doc(this.state.key)
+      .update({
       title:this.state.title,
       content:this.state.content,
       deadline:this.state.deadline
