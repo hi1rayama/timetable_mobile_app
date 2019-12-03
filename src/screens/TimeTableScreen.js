@@ -105,6 +105,7 @@ class TimeTableScreen extends React.Component {
             fiveList={this.state.fiveList} 
             navigation={this.props.navigation} />
         </View>
+        
       </View>
 
 

@@ -36,7 +36,6 @@ class TodoListScreen extends React.Component{
            });
            this.setState({todoList});
        });
-       
 
     }
     render(){

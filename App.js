@@ -1,16 +1,11 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
-import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
-//import Table from 'react-native-simple-table';
 import firebase from 'firebase';
 import ENV from './env.json';
 
 
 import MenuListScreen from './src/screens/MenuListScreen';
 import TimeTableScreen from './src/screens/TimeTableScreen';
-import CurrentStatusListScreen from './src/screens/CurrentStatusListScreen';
 import SubjectDetailScreen from './src/screens/SubjectDetailScreen';
 import SettingHomeScreen from './src/screens/SettingHomeScreen';
 import LoginScreen from './src/screens/LoginScreen';

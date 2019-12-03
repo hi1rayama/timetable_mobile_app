@@ -41,7 +41,6 @@ class TodoDetailScreen extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={styles.inline}>
-
                     <Text style={styles.inputformat}>講義名: {this.state.name}</Text>
                 </View>
 
