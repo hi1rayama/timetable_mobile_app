@@ -60,6 +60,9 @@ class TodoDetailScreen extends React.Component {
                     <TouchableHighlight onPress={this.handlePress.bind(this)} style={styles.button} underlayColor='#ddd'>
                         <Text style={styles.buttonTitle}>編集</Text>
                     </TouchableHighlight>
+                    <TouchableHighlight onPress={()=>{}} style={styles.button} underlayColor='#ddd'>
+                        <Text style={styles.buttonTitle}>完了</Text>
+                    </TouchableHighlight>
                 </View>
             </View>
 
