@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableHighlight,Alert } from 'react-native';
 import CircleButton from '../elements/CircleButton';
 import firebase from 'firebase';
 
@@ -68,6 +68,7 @@ class SubjectDetailScreen extends React.Component {
   }
 
 
+
   componentWillMount() {
     const { params } = this.props.navigation.state;
     console.log(params.item);
@@ -111,7 +112,13 @@ class SubjectDetailScreen extends React.Component {
   }
 
   handleCreateTodo() {
-     this.props.navigation.navigate('TodoCreate',{item:this.state.item}); 
+    if(this.state.name===''){
+      Alert.alert('この時間の科目の登録を行ってください');
+      
+    }else{
+      this.props.navigation.navigate('TodoCreate',{item:this.state.item}); 
+    }
+     
   }
 
 
@@ -168,12 +175,14 @@ class SubjectDetailScreen extends React.Component {
           <Text style={styles.counter}>{this.state.cancell}回</Text>
         </View>
 
-        <CircleButton color="white" style={{ width: 335 }} name="plus" onPress={this.attendanceUp} />
-        <CircleButton color="white" style={{ width: 290 }} name="minus" onPress={this.attendanceDown} />
-        <CircleButton color="white" style={{ width: 225 }} name="plus" onPress={this.absenceUp} />
-        <CircleButton color="white" style={{ width: 180 }} name="minus" onPress={this.absenceDown} />
-        <CircleButton color="white" style={{ width: 115 }} name="plus" onPress={this.cancellUp} />
-        <CircleButton color="white" style={{ width: 70 }} name="minus" onPress={this.cancellDown} />
+        <CircleButton color="white" style={{ width: 335,marginTop:10 }} name="plus" onPress={this.attendanceUp} />
+        <CircleButton color="white" style={{ width: 290,marginTop:10 }} name="minus" onPress={this.attendanceDown} />
+        <CircleButton color="white" style={{ width: 225,marginTop:10 }} name="plus" onPress={this.absenceUp} />
+        <CircleButton color="white" style={{ width: 180,marginTop:10 }} name="minus" onPress={this.absenceDown} />
+        <CircleButton color="white" style={{ width: 115,marginTop:10 }} name="plus" onPress={this.cancellUp} />
+        <CircleButton color="white" style={{ width: 70 ,marginTop:10}} name="minus" onPress={this.cancellDown} />
+
+      
 
 
         <View style={{ top: 80 }}>
@@ -181,8 +190,9 @@ class SubjectDetailScreen extends React.Component {
             <Text style={styles.buttonTitle}>保存する</Text>
           </TouchableHighlight>
           </View>
+
           <View style={{ top: 150 }}>
-          <TouchableHighlight onPress={this.handleCreateTodo.bind(this)} style={styles.button} underlayColor='#ddd'>
+          <TouchableHighlight onPress={this.handleCreateTodo.bind(this)}  style={styles.button} underlayColor='#ddd'>
             <Text style={styles.buttonTitle}>TODOを追加</Text>
           </TouchableHighlight>
         </View>
@@ -207,9 +217,7 @@ const styles = StyleSheet.create({
   inline: {
     justifyContent: 'space-evenly',
     flexDirection: 'row',
-    paddingTop: 15,
-
-
+    paddingTop: 15
   },
   textformat: {
     fontSize: 30,

@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
+import {createAppContainer} from 'react-navigation';
 import firebase from 'firebase';
 import ENV from './env.json';
 

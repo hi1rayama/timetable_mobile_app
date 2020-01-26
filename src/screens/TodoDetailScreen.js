@@ -45,7 +45,7 @@ class TodoDetailScreen extends React.Component {
                 </View>
 
                 <View style={{ flexDirection: 'row' }}>
-                    <Text style={styles.inputformat}>タイトル: {item.title}</Text>
+                    <Text style={styles.inputformat}>題名　: {item.title}</Text>
                 </View>
 
                 <View style={{ flexDirection: 'row' }}>
@@ -60,9 +60,11 @@ class TodoDetailScreen extends React.Component {
                     <TouchableHighlight onPress={this.handlePress.bind(this)} style={styles.button} underlayColor='#ddd'>
                         <Text style={styles.buttonTitle}>編集</Text>
                     </TouchableHighlight>
-                    <TouchableHighlight onPress={()=>{}} style={styles.button} underlayColor='#ddd'>
+                    {/*
+                   <TouchableHighlight onPress={()=>{}} style={styles.button} underlayColor='#ddd'>
                         <Text style={styles.buttonTitle}>完了</Text>
                     </TouchableHighlight>
+                    */}
                 </View>
             </View>
 

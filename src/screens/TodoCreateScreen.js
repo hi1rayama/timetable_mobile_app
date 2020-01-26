@@ -69,8 +69,8 @@ class TodoCreateScreen extends React.Component {
     return (
 
       <View style={styles.container}  >
-        <View style={styles.inline}>
-          <Text style={styles.textformat}>タイトル:</Text>
+        <View style={{flexDirection:'row'}}>
+          <Text style={styles.textformat}>題名　: </Text>
           <TextInput
             style={styles.inputformat}
             value={this.state.title}

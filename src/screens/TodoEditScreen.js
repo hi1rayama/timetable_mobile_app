@@ -71,7 +71,7 @@ class TodoEditScreen extends React.Component {
 
       <View style={styles.container}  >
         <View style={styles.inline}>
-          <Text style={styles.textformat}>タイトル:</Text>
+          <Text style={styles.textformat}>題名　: </Text>
           <TextInput
             style={styles.inputformat}
             value={this.state.title}
